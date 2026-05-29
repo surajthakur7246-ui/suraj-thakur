@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — SURAJ · Filmmaker · Animator · VFX</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* About Page Specific */
+    .about-hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 160px 60px 100px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .about-hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.5) contrast(1.2) brightness(0.6);
+    }
+
+    .about-hero-right::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--bg-primary) 0%, transparent 40%);
+      z-index: 1;
+    }
+
+    .about-hero-right::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 40%, rgba(217,4,41,0.25) 100%);
+      z-index: 1;
+    }
+
+    .about-super-title {
+      font-family: var(--font-hero);
+      font-size: clamp(80px, 14vw, 180px);
+      line-height: 0.85;
+      color: var(--text-white);
+      margin-bottom: 24px;
+    }
+
+    .about-super-title .red {
+      color: var(--red-primary);
+      text-shadow: var(--glow-red-intense);
+    }
+
+    .about-intro-text {
+      font-family: var(--font-text);
+      font-size: 16px;
+      line-height: 1.9;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 32px;
+    }
+
+    /* Services Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .service-item {
+      background: var(--bg-primary);
+      padding: 48px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+      cursor: default;
+    }
+
+    .service-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(217,4,41,0.08), transparent);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .service-item:hover::before {
+      opacity: 1;
+    }
+
+    .service-item:hover {
+      background: rgba(255,30,30,0.04);
+    }
+
+    .service-num {
+      font-family: var(--font-hero);
+      font-size: 60px;
+      color: rgba(255,30,30,0.1);
+      line-height: 1;
+      margin-bottom: 16px;
+      transition: var(--transition);
+    }
+
+    .service-item:hover .service-num {
+      color: rgba(255,30,30,0.3);
+    }
+
+    .service-title {
+      font-family: var(--font-ui);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--text-white);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .service-desc {
+      font-family: var(--font-text);
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    /* Philosophy Section */
+    .philosophy-section {
+      background: var(--bg-secondary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .philosophy-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .philosophy-quote {
+      font-family: var(--font-hero);
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.1;
+      color: var(--text-white);
+      border-left: 3px solid var(--red-primary);
+      padding-left: 32px;
+    }
+
+    .philosophy-quote .red {
+      color: var(--red-primary);
+      text-shadow: var(--glow-red);
+    }
+
+    .philosophy-author {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 20px;
+      padding-left: 32px;
+    }
+
+    .philosophy-items {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .philosophy-item {
+      display: flex;
+      gap: 20px;
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,0.04);
+      transition: var(--transition);
+    }
+
+    .philosophy-item:hover {
+      border-color: rgba(255,30,30,0.3);
+      background: rgba(255,30,30,0.03);
+    }
+
+    .philosophy-item-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,30,30,0.08);
+      border: 1px solid rgba(255,30,30,0.15);
+    }
+
+    .philosophy-item-title {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--text-white);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .philosophy-item-text {
+      font-family: var(--font-text);
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    /* Awards Section */
+    .awards-section {
+      background: var(--bg-primary);
+    }
+
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .award-card {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      padding: 36px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: var(--transition);
+    }
+
+    .award-card:hover {
+      border-color: rgba(255,30,30,0.3);
+      transform: translateY(-4px);
+    }
+
+    .award-icon {
+      font-size: 36px;
+      flex-shrink: 0;
+    }
+
+    .award-year {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--red-primary);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .award-title {
+      font-family: var(--font-hero);
+      font-size: 24px;
+      color: var(--text-white);
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .award-org {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    /* Big Stats */
+    .big-stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,30,30,0.1);
+    }
+
+    .big-stat-item {
+      background: var(--bg-secondary);
+      padding: 60px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .big-stat-item::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--red-primary);
+      transform: scaleX(0);
+      transition: transform 0.5s;
+    }
+
+    .big-stat-item:hover::before {
+      transform: scaleX(1);
+    }
+
+    .big-stat-num {
+      font-family: var(--font-hero);
+      font-size: 80px;
+      color: var(--red-primary);
+      text-shadow: var(--glow-red);
+      line-height: 1;
+    }
+
+    .big-stat-label {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .about-hero { grid-template-columns: 1fr; }
+      .about-hero-right { height: 50vh; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .philosophy-inner { grid-template-columns: 1fr; gap: 50px; }
+      .awards-grid { grid-template-columns: 1fr; }
+      .big-stats-row { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .about-hero-left { padding: 120px 24px 60px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .big-stats-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loading -->
+  <div class="loading-screen">
+    <div class="loading-logo">SUR<span>AJ</span></div>
+    <div class="loading-bar-wrap"><div class="loading-bar"></div></div>
+    <div class="loading-percent">0%</div>
+  </div>
+
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">SUR<span>AJ</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta"><span>Let's Work</span></a>
+    <div class="nav-toggle"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="mobile-menu">
+    <ul class="mobile-menu-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ABOUT HERO -->
+  <section class="about-hero">
+    <!-- Web overlay -->
+    <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3;opacity:0.06;" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#FF1E1E" stroke-width="0.6" fill="none">
+        <line x1="0" y1="900" x2="400" y2="0" />
+        <line x1="0" y1="900" x2="600" y2="0" />
+        <line x1="0" y1="900" x2="200" y2="0" />
+        <path d="M 0,900 Q 200,600 400,0" />
+        <path d="M 0,900 Q 300,500 600,0" />
+      </g>
+    </svg>
+
+    <!-- Glow -->
+    <div style="position:absolute;bottom:0;left:0;width:700px;height:700px;background:radial-gradient(circle,rgba(217,4,41,0.1) 0%,transparent 70%);pointer-events:none;z-index:1;"></div>
+
+    <div class="about-hero-left">
+      <div class="section-tag" style="margin-bottom:20px;">The Creative Mind</div>
+      <h1 class="about-super-title">
+        I AM<br/><span class="red">SURAJ</span>
+      </h1>
+      <p class="about-intro-text">
+        A storyteller who sees the world in frames, motion, and emotion. I don't just create content — I architect cinematic universes that captivate, inspire, and leave a lasting mark on every viewer.
+      </p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;">
+        <a href="portfolio.html" class="btn-primary"><i class="fas fa-play"></i> See My Work</a>
+        <a href="contact.html" class="btn-secondary"><i class="fas fa-envelope"></i> Get In Touch</a>
+      </div>
+    </div>
+
+    <div class="about-hero-right">
+      <img src="IMAGES/suraj image.png" alt="SURAJ - Filmmaker" loading="eager" />
+    </div>
+  </section>
+
+  <!-- BIG STATS -->
+  <div class="big-stats-row">
+    <div class="big-stat-item">
+      <div class="big-stat-num">50+</div>
+      <div class="big-stat-label">Projects Delivered</div>
+    </div>
+    <div class="big-stat-item">
+      <div class="big-stat-num">5+</div>
+      <div class="big-stat-label">Years of Experience</div>
+    </div>
+    <div class="big-stat-item">
+      <div class="big-stat-num">30+</div>
+      <div class="big-stat-label">Happy Clients</div>
+    </div>
+    <div class="big-stat-item">
+      <div class="big-stat-num">8+</div>
+      <div class="big-stat-label">Awards & Recognition</div>
+    </div>
+  </div>
+
+  <!-- SERVICES GRID -->
+  <section class="section-padding" style="background:var(--bg-secondary);">
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(217,4,41,0.04) 0%,transparent 60%);pointer-events:none;"></div>
+
+    <div class="section-header reveal">
+      <div class="section-tag">What I Do</div>
+      <h2 class="section-title">MY <span class="red">SERVICES</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-item reveal">
+        <div class="service-num">01</div>
+        <div class="service-title">Filmmaking</div>
+        <p class="service-desc">End-to-end cinematic production. From concept development, scripting, and storyboarding to direction, shooting, and delivery.</p>
+      </div>
+      <div class="service-item reveal" style="transition-delay:0.1s">
+        <div class="service-num">02</div>
+        <div class="service-title">VFX & CGI</div>
+        <p class="service-desc">Cutting-edge visual effects using industry-standard tools. Particle systems, compositing, motion tracking, and photorealistic CGI.</p>
+      </div>
+      <div class="service-item reveal" style="transition-delay:0.2s">
+        <div class="service-num">03</div>
+        <div class="service-title">3D Animation</div>
+        <p class="service-desc">Character animation, environment design, and cinematic sequences in Blender, Cinema 4D, and Unreal Engine.</p>
+      </div>
+      <div class="service-item reveal" style="transition-delay:0.3s">
+        <div class="service-num">04</div>
+        <div class="service-title">Motion Graphics</div>
+        <p class="service-desc">Dynamic motion design for brands, titles, promos, and social media — creating compelling visual narratives through movement.</p>
+      </div>
+      <div class="service-item reveal" style="transition-delay:0.4s">
+        <div class="service-num">05</div>
+        <div class="service-title">Video Editing</div>
+        <p class="service-desc">Precision editing with cinematic pacing, sound design, color grading, and seamless storytelling flow.</p>
+      </div>
+      <div class="service-item reveal" style="transition-delay:0.5s">
+        <div class="service-num">06</div>
+        <div class="service-title">Creative Direction</div>
+        <p class="service-desc">Complete creative leadership for campaigns, brands, and productions — from initial concept to final cinematic output.</p>
+      </div>
+      <div class="service-item reveal" style="transition-delay:0.6s">
+        <div class="service-num">07</div>
+        <div class="service-title">Color Grading</div>
+        <p class="service-desc">Cinematic color work using DaVinci Resolve. Creating mood, atmosphere, and visual identity through the power of color.</p>
+      </div>
+      <div class="service-item reveal" style="transition-delay:0.7s">
+        <div class="service-num">08</div>
+        <div class="service-title">Brand Storytelling</div>
+        <p class="service-desc">Transforming brand narratives into cinematic content that connects emotionally and drives powerful audience engagement.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy-section section-padding">
+    <div style="position:absolute;top:0;right:0;width:500px;height:500px;background:radial-gradient(circle,rgba(217,4,41,0.08) 0%,transparent 70%);pointer-events:none;"></div>
+
+    <div class="philosophy-inner">
+      <div class="reveal-left">
+        <div class="section-tag" style="margin-bottom:20px;">Creative DNA</div>
+        <blockquote class="philosophy-quote">
+          "EVERY FRAME IS A <span class="red">UNIVERSE</span>. EVERY CUT IS A <span class="red">HEARTBEAT</span>."
+        </blockquote>
+        <p class="philosophy-author">— SURAJ, Creative Philosophy</p>
+        <br />
+        <p style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.9;color:var(--text-muted);padding-left:32px;">
+          I believe visual storytelling is the most powerful form of human expression. My approach combines technical mastery with raw emotional intelligence — creating work that doesn't just look stunning, but feels alive.
+        </p>
+      </div>
+
+      <div class="philosophy-items reveal-right">
+        <div class="philosophy-item">
+          <div class="philosophy-item-icon">🔥</div>
+          <div>
+            <div class="philosophy-item-title">Passion-Driven</div>
+            <p class="philosophy-item-text">Every project receives the same obsessive attention to detail, regardless of scale. Because excellence has no threshold.</p>
+          </div>
+        </div>
+        <div class="philosophy-item">
+          <div class="philosophy-item-icon">⚡</div>
+          <div>
+            <div class="philosophy-item-title">Innovation-First</div>
+            <p class="philosophy-item-text">Constantly pushing boundaries of what's possible. Combining emerging technology with artistic vision to create something never seen before.</p>
+          </div>
+        </div>
+        <div class="philosophy-item">
+          <div class="philosophy-item-icon">🎯</div>
+          <div>
+            <div class="philosophy-item-title">Story-Centric</div>
+            <p class="philosophy-item-text">No matter the medium — VFX, animation, or film — story always comes first. The technology serves the narrative, not the other way around.</p>
+          </div>
+        </div>
+        <div class="philosophy-item">
+          <div class="philosophy-item-icon">🌍</div>
+          <div>
+            <div class="philosophy-item-title">Global Perspective</div>
+            <p class="philosophy-item-text">Drawing inspiration from world cinema, gaming, and art to create work that transcends cultural boundaries and speaks to everyone.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE (on about page) -->
+  <section class="timeline-section section-padding">
+    <div class="section-header reveal">
+      <div class="section-tag">Experience</div>
+      <h2 class="section-title">CREATIVE<br/><span class="red">JOURNEY</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-year">2019 · SPARK</div>
+          <div class="timeline-title">The Origin Story</div>
+          <p class="timeline-text">First camera. First edit. First realisation that visual storytelling was my superpower. Spent 1000+ hours self-teaching every tool.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-year">2020 · RISE</div>
+          <div class="timeline-title">Animation & VFX Deep Dive</div>
+          <p class="timeline-text">Mastered Blender and After Effects. First viral motion graphics project. Crossed 100K views milestone.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-year">2021 · EXPAND</div>
+          <div class="timeline-title">Professional Collaborations</div>
+          <p class="timeline-text">First paid clients. Worked with brands, agencies, and indie productions. Built a reputation for cinematic quality.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-year">2022 · DIRECT</div>
+          <div class="timeline-title">Debut Film Direction</div>
+          <p class="timeline-text">Directed, shot, and edited debut short film. Selected for 3 international film festivals. Began building creative studio.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-year">2023–24 · SUMMIT</div>
+          <div class="timeline-title">Global Recognition</div>
+          <p class="timeline-text">International clients across Asia, Middle East & Europe. Building towards feature-length animated film. The story continues.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section class="awards-section section-padding">
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(217,4,41,0.04) 0%,transparent 60%);pointer-events:none;"></div>
+
+    <div class="section-header reveal">
+      <div class="section-tag">Recognition</div>
+      <h2 class="section-title">AWARDS &<br/><span class="red">HONOURS</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="awards-grid">
+      <div class="award-card reveal">
+        <div class="award-icon">🏆</div>
+        <div>
+          <div class="award-year">2023 · Best VFX</div>
+          <div class="award-title">Visual Excellence Award</div>
+          <div class="award-org">India International Film Festival</div>
+        </div>
+      </div>
+      <div class="award-card reveal" style="transition-delay:0.1s">
+        <div class="award-icon">🎖️</div>
+        <div>
+          <div class="award-year">2023 · Best Animation</div>
+          <div class="award-title">Motion Design of the Year</div>
+          <div class="award-org">Creative Circle Awards</div>
+        </div>
+      </div>
+      <div class="award-card reveal" style="transition-delay:0.2s">
+        <div class="award-icon">🥇</div>
+        <div>
+          <div class="award-year">2022 · Best Short Film</div>
+          <div class="award-title">Cinematic Vision Award</div>
+          <div class="award-org">Mumbai Short Film Festival</div>
+        </div>
+      </div>
+      <div class="award-card reveal" style="transition-delay:0.3s">
+        <div class="award-icon">⭐</div>
+        <div>
+          <div class="award-year">2022 · Emerging Talent</div>
+          <div class="award-title">Rising Star in Visual Arts</div>
+          <div class="award-org">National Creative Arts Foundation</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section section-padding">
+    <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.04;" viewBox="0 0 1440 700" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#FF1E1E" stroke-width="0.8" fill="none">
+        <circle cx="720" cy="350" r="150" /><circle cx="720" cy="350" r="250" /><circle cx="720" cy="350" r="350" />
+        <line x1="720" y1="0" x2="720" y2="700" /><line x1="0" y1="350" x2="1440" y2="350" />
+      </g>
+    </svg>
+    <div style="position:relative;z-index:1;" class="reveal">
+      <div class="section-tag">Next Step</div>
+      <h2 class="cta-title">LET'S CREATE<br/><span class="red">SOMETHING</span><br/>LEGENDARY</h2>
+      <p class="cta-desc">The best stories haven't been told yet. Let's write one together.</p>
+      <div class="cta-buttons">
+        <a href="contact.html" class="btn-primary"><i class="fas fa-rocket"></i> Start Collaboration</a>
+        <a href="portfolio.html" class="btn-secondary"><i class="fas fa-eye"></i> View My Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">SUR<span>AJ</span></a>
+        <p class="footer-bio">Cinematic filmmaker, animator, VFX designer and visual storyteller. Creating immersive experiences that live at the edge of imagination and reality.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="#">Filmmaking</a></li>
+          <li><a href="#">VFX & CGI</a></li>
+          <li><a href="#">3D Animation</a></li>
+          <li><a href="#">Motion Graphics</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Connect</div>
+        <ul class="footer-links">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#">Behance</a></li>
+          <li><a href="#">Vimeo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 <span>SURAJ</span> · All Rights Reserved</div>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

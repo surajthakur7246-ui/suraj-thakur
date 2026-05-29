@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SURAJ — Filmmaker · Animator · VFX · Visual Storyteller</title>
+  <meta name="description" content="SURAJ — Cinematic portfolio of a filmmaker, animator, editor, VFX designer and visual storyteller." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- Lenis -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <!-- Vanilla Tilt -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+
+  <!-- Swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================ -->
+  <!-- LOADING SCREEN -->
+  <!-- ============================================================ -->
+  <div class="loading-screen">
+    <div class="loading-logo">SUR<span>AJ</span></div>
+    <div class="loading-bar-wrap"><div class="loading-bar"></div></div>
+    <div class="loading-percent">0%</div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <!-- ============================================================ -->
+  <!-- NAVIGATION -->
+  <!-- ============================================================ -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">SUR<span>AJ</span></a>
+
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <a href="contact.html" class="nav-cta"><span>Let's Work</span></a>
+
+    <div class="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <ul class="mobile-menu-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- HERO SECTION -->
+  <!-- ============================================================ -->
+  <section class="hero" id="home">
+    <!-- Three.js Canvas -->
+    <canvas id="hero-canvas"></canvas>
+
+    <!-- Spider Web SVG Overlay -->
+    <svg class="web-overlay" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <g stroke="#FF1E1E" stroke-width="0.5" fill="none" opacity="0.5">
+        <!-- Web lines from top right -->
+        <line x1="1440" y1="0" x2="900" y2="450" />
+        <line x1="1440" y1="0" x2="800" y2="500" />
+        <line x1="1440" y1="0" x2="700" y2="400" />
+        <line x1="1440" y1="0" x2="1100" y2="600" />
+        <line x1="1440" y1="0" x2="600" y2="300" />
+        <!-- Arcs -->
+        <path d="M 1440,0 Q 1200,200 900,450" />
+        <path d="M 1440,0 Q 1100,150 700,400" />
+        <path d="M 1440,0 Q 1300,300 1100,600" />
+        <!-- Cross lines -->
+        <line x1="900" y1="450" x2="800" y2="500" />
+        <line x1="800" y1="500" x2="700" y2="400" />
+        <line x1="700" y1="400" x2="600" y2="300" />
+        <line x1="900" y1="450" x2="1100" y2="600" />
+      </g>
+      <!-- Corner web bottom left -->
+      <g stroke="#FF1E1E" stroke-width="0.4" fill="none" opacity="0.3">
+        <line x1="0" y1="900" x2="300" y2="500" />
+        <line x1="0" y1="900" x2="250" y2="400" />
+        <line x1="0" y1="900" x2="150" y2="600" />
+        <path d="M 0,900 Q 150,700 300,500" />
+        <path d="M 0,900 Q 100,700 250,400" />
+      </g>
+    </svg>
+
+    <!-- Hero Content -->
+    <div class="hero-content">
+      <!-- Left Column -->
+      <div class="hero-left">
+        <div class="hero-badge">
+          <span>Creative Artist · Visual Storyteller</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="hello">HELLO, I'M</span>
+          <span class="name glitch" data-text="SURAJ">
+            SUR<span class="highlight" data-text="AJ">AJ</span>
+          </span>
+        </h1>
+
+        <p class="hero-subtitle">Filmmaker • Animator • Editor • Visual Storyteller</p>
+
+        <p class="hero-desc">
+          Crafting cinematic worlds where darkness meets light. I transform raw imagination into immersive visual experiences — from high-octane VFX to emotionally driven narratives.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="portfolio.html" class="btn-primary">
+            <i class="fas fa-play"></i> View My Work
+          </a>
+          <a href="about.html" class="btn-secondary">
+            <i class="fas fa-user"></i> About Me
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat-item">
+            <span class="hero-stat-num">50+</span>
+            <span class="hero-stat-label">Projects</span>
+          </div>
+          <div class="hero-stat-item">
+            <span class="hero-stat-num">5+</span>
+            <span class="hero-stat-label">Years Exp.</span>
+          </div>
+          <div class="hero-stat-item">
+            <span class="hero-stat-num">30+</span>
+            <span class="hero-stat-label">Clients</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="hero-right">
+        <div class="hero-visual">
+          <div class="hero-glow-orb red"></div>
+          <div class="hero-glow-orb" style="width:200px;height:200px;background:radial-gradient(circle,rgba(255,30,30,0.15) 0%,transparent 70%);top:20%;left:10%;animation:orb-pulse 6s ease-in-out infinite;animation-delay:1s;filter:blur(40px);position:absolute;"></div>
+
+          <div class="hero-img-main">
+            <img
+              src="https://images.pexels.com/photos/23384400/pexels-photo-23384400.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=900&w=700"
+              alt="SURAJ - Filmmaker and Visual Artist"
+              loading="eager"
+            />
+          </div>
+
+          <!-- Floating Panels -->
+          <div class="hero-floating-panel panel-1">
+            <div class="panel-label">Current Status</div>
+            <div class="panel-value">LIVE</div>
+            <div class="panel-sub">Available for projects</div>
+          </div>
+
+          <div class="hero-floating-panel panel-2">
+            <div class="panel-label">Speciality</div>
+            <div class="panel-value">VFX</div>
+            <div class="panel-sub">Visual Effects & CGI</div>
+          </div>
+
+          <!-- Decorative Frame -->
+          <div style="position:absolute;top:10%;left:5%;right:5%;bottom:10%;border:1px solid rgba(255,30,30,0.08);pointer-events:none;"></div>
+          <div style="position:absolute;top:5%;left:10%;right:10%;bottom:5%;border:1px solid rgba(255,30,30,0.05);pointer-events:none;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>Scroll Down</span>
+    </div>
+
+    <!-- Bottom red gradient line -->
+    <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#FF1E1E,transparent);opacity:0.4;"></div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- MARQUEE DIVIDER -->
+  <!-- ============================================================ -->
+  <div class="marquee-divider">
+    <div class="marquee-divider-inner">
+      <div class="marquee-divider-text">FILMMAKER <span>✦</span> ANIMATOR <span>✦</span> VFX DESIGNER <span>✦</span> VISUAL STORYTELLER <span>✦</span> EDITOR <span>✦</span> CREATIVE ARTIST <span>✦</span></div>
+      <div class="marquee-divider-text">FILMMAKER <span>✦</span> ANIMATOR <span>✦</span> VFX DESIGNER <span>✦</span> VISUAL STORYTELLER <span>✦</span> EDITOR <span>✦</span> CREATIVE ARTIST <span>✦</span></div>
+      <div class="marquee-divider-text">FILMMAKER <span>✦</span> ANIMATOR <span>✦</span> VFX DESIGNER <span>✦</span> VISUAL STORYTELLER <span>✦</span> EDITOR <span>✦</span> CREATIVE ARTIST <span>✦</span></div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- ABOUT SECTION -->
+  <!-- ============================================================ -->
+  <section class="about-section section-padding" id="about">
+    <!-- Red ambient glow -->
+    <div style="position:absolute;top:50%;right:0;width:600px;height:600px;background:radial-gradient(circle,rgba(127,29,29,0.12) 0%,transparent 70%);transform:translateY(-50%);pointer-events:none;"></div>
+
+    <div class="about-grid">
+      <div class="about-img-wrapper reveal-left">
+        <div class="about-img-frame">
+          <img
+            src="https://images.pexels.com/photos/6728042/pexels-photo-6728042.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=800&w=600"
+            alt="SURAJ at work"
+            loading="lazy"
+          />
+        </div>
+        <div class="about-img-border"></div>
+        <div class="about-img-label">
+          <div class="panel-label">Creative Director</div>
+          <div style="font-family:'Orbitron',sans-serif;font-size:13px;color:#F8FAFC;margin-top:2px;">SURAJ</div>
+        </div>
+      </div>
+
+      <div class="about-text reveal-right">
+        <div class="section-tag">About Me</div>
+        <h2 class="about-title">
+          THE <span style="color:#FF1E1E;text-shadow:0 0 20px rgba(255,30,30,0.5);">STORY</span><br/>BEHIND<br/>THE FRAME
+        </h2>
+
+        <p class="about-desc">
+          I am SURAJ — a cinematic architect who builds worlds frame by frame. With over 5 years of experience weaving together live-action, animation, and visual effects, I bring ideas to life that exist at the intersection of technology and raw emotion.
+        </p>
+        <p class="about-desc" style="margin-top:12px;">
+          From explosive action sequences to subtle emotional moments, I craft stories that resonate. My toolkit spans from After Effects to Blender, Cinema 4D to DaVinci Resolve — but my greatest weapon is creative vision.
+        </p>
+
+        <div class="about-skills-row">
+          <span class="skill-tag">After Effects</span>
+          <span class="skill-tag">Cinema 4D</span>
+          <span class="skill-tag">Blender</span>
+          <span class="skill-tag">DaVinci Resolve</span>
+          <span class="skill-tag">Premiere Pro</span>
+          <span class="skill-tag">Nuke</span>
+          <span class="skill-tag">Photoshop</span>
+          <span class="skill-tag">Illustrator</span>
+          <span class="skill-tag">Houdini</span>
+          <span class="skill-tag">Unreal Engine</span>
+        </div>
+
+        <div class="about-stats">
+          <div class="about-stat">
+            <div class="about-stat-num">50+</div>
+            <div class="about-stat-text">Projects Done</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">5+</div>
+            <div class="about-stat-text">Years Active</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">30+</div>
+            <div class="about-stat-text">Happy Clients</div>
+          </div>
+        </div>
+
+        <div style="margin-top:28px;">
+          <a href="about.html" class="btn-primary">
+            <i class="fas fa-arrow-right"></i> Full Story
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- PORTFOLIO SECTION -->
+  <!-- ============================================================ -->
+  <section class="portfolio-section section-padding" id="portfolio">
+    <!-- Glow effects -->
+    <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:4px;background:linear-gradient(90deg,transparent,#FF1E1E,transparent);"></div>
+    <div style="position:absolute;top:20%;left:0;width:400px;height:400px;background:radial-gradient(circle,rgba(217,4,41,0.06) 0%,transparent 70%);pointer-events:none;"></div>
+
+    <div class="section-header reveal">
+      <div class="section-tag">Featured Work</div>
+      <h2 class="section-title">MY <span class="red">PROJECTS</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+   <!-- PORTFOLIO FILTER + GRID -->
+<section>
+  <div class="section-container">
+
+    <!-- Filters -->
+    <div class="filter-wrap anim-fadeup" style="justify-content:center;margin-bottom:3rem;">
+      <button class="filter-btn active" data-filter="all">All Work</button>
+      <button class="filter-btn" data-filter="animation">2D Animation</button>
+      <button class="filter-btn" data-filter="motion">Motion Graphics</button>
+      <button class="filter-btn" data-filter="branding">Branding</button>
+      <button class="filter-btn" data-filter="vfx">VFX</button>
+      <button class="filter-btn" data-filter="poster">Posters</button>
+    </div>
+
+    <!-- Portfolio Grid -->
+    <div class="portfolio-grid">
+
+     <div class="portfolio-card anim-fadeup anim-delay-3" data-cat="animation">
+        <div class="video-box"><iframe
+    src="https://drive.google.com/file/d/1xoZjFbNozu21rP5LE_ab_hgl8bcwu9G4/preview"
+    allow="autoplay"
+    allowfullscreen>
+  </iframe>
+			  </div>
+        <div class="portfolio-overlay">
+          <div class="portfolio-cat">2D Animation</div>
+          <div class="portfolio-name">Car Animation</div>
+          <div class="portfolio-link">View Project →</div>
+        </div>
+        <div class="portfolio-glow"></div>
+      </div>
+
+       
+
+      <div class="portfolio-card anim-fadeup anim-delay-3" data-cat="vfx">
+<div class="video-box"><iframe
+    src="https://drive.google.com/file/d/194JgQDgI435X7y6UvHce6VHktd_T3Q5H/preview"
+    allow="autoplay"
+    allowfullscreen>
+  </iframe>
+			  </div>        <div class="portfolio-overlay">
+          <div class="portfolio-cat">VFX</div>
+          <div class="portfolio-name">DHURANDHAR</div>
+          <div class="portfolio-link" >View Project →</div>
+        </div>
+        <div class="portfolio-glow"></div>
+      </div>
+
+      <div class="portfolio-card anim-fadeup anim-delay-4" data-cat="branding">
+       <img src="IMAGES/PORTFOLIO LOGO DESIGN 2.png" onclick="openFullscreen(this)">
+        <div class="portfolio-overlay">
+          <div class="portfolio-cat">Branding</div>
+          <div class="portfolio-name">Logo</div>
+          <div class="portfolio-link">View Project →</div>
+        </div>
+        <div class="portfolio-glow"></div>
+      </div>
+
+      <div class="portfolio-card anim-fadeup anim-delay-5" data-cat="poster">
+      <img src="IMAGES/PORTFOLIO POSTER.jpg" onclick="openFullscreen(this)">
+        <div class="portfolio-overlay">
+          <div class="portfolio-cat">Poster Design</div>
+          <div class="portfolio-name">Sukuna Poster</div>
+          <div class="portfolio-link">View Project →</div>
+        </div>
+        <div class="portfolio-glow"></div>
+      </div>
+
+     <div class="portfolio-card anim-fadeup anim-delay-3" data-cat="animation">
+        <div class="video-box"><iframe
+    src="https://drive.google.com/file/d/15CYBOOpNbjdMJeiazX7y4TIBasPaWgVx/preview"
+    allow="autoplay"
+    allowfullscreen>
+  </iframe>
+			  </div>
+        <div class="portfolio-overlay">
+          <div class="portfolio-cat">2D Animation</div>
+          <div class="portfolio-name">Ball Animation</div>
+          <div class="portfolio-link">View Project →</div>
+        </div>
+        <div class="portfolio-glow"></div>
+      </div>
+
+      <div class="portfolio-card anim-fadeup anim-delay-1" data-cat="motion">
+        <div class="video-box">
+  <iframe
+    src="https://drive.google.com/file/d/1odngv29K9Cb_cOZwHjtnaZ-oBaubVs0W/preview"
+    allow="autoplay"
+    allowfullscreen>
+  </iframe>
+</div>
+        <div class="portfolio-overlay">
+          <div class="portfolio-cat">Motion Graphics</div>
+          <div class="portfolio-name">Ad Animation</div>
+          <div class="portfolio-link">View Project →</div>
+        </div>
+        <div class="portfolio-glow"></div>
+      </div>
+
+      <div class="portfolio-card anim-fadeup anim-delay-2" data-cat="branding">
+        <img src="IMAGES/PORTFOLIO LOGO DESIGN 3.png" onclick="openFullscreen(this)">
+        <div class="portfolio-overlay">
+          <div class="portfolio-cat">Branding</div>
+          <div class="portfolio-name">Berry Room</div>
+          <div class="portfolio-link">View Project →</div>
+        </div>
+        <div class="portfolio-glow"></div>
+      </div>
+
+      <div class="portfolio-card anim-fadeup anim-delay-1" data-cat="vfx">
+        <div class="video-box">
+  <iframe
+    src="https://drive.google.com/file/d/1CLindcGkftEMXH73TiXQqk3OLTPm2oqp/preview"
+    allow="autoplay"
+    allowfullscreen>
+  </iframe>
+</div>
+        <div class="portfolio-overlay">
+          <div class="portfolio-cat">Video Editing</div>
+          <div class="portfolio-name">Dhurandhar Trailer</div>
+          <div class="portfolio-link">View Project →</div>
+        </div>
+        <div class="portfolio-glow"></div>
+      </div>
+
+   <div class="portfolio-card anim-fadeup anim-delay-3" data-cat="motion">
+        <div class="video-box"><iframe
+    src="https://drive.google.com/file/d/190EPhlgdaSJEe7YG0k5II22TPpKXqCGU/preview"
+    allow="autoplay"
+    allowfullscreen>
+  </iframe>
+			  </div>
+        <div class="portfolio-overlay">
+          <div class="portfolio-cat">Motion Graphics</div>
+          <div class="portfolio-name">Logo Animation</div>
+          <div class="portfolio-link">View Project →</div>
+        </div>
+        <div class="portfolio-glow"></div>
+      </div>
+		
+		 
+    
+	  
+		 
+		  </div>
+
+  <!-- ============================================================ -->
+  <!-- SKILLS SECTION -->
+  <!-- ============================================================ -->
+  <section class="skills-section section-padding" id="skills">
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(217,4,41,0.03) 0%,transparent 50%);pointer-events:none;"></div>
+
+    <div class="section-header reveal">
+      <div class="section-tag">Expertise</div>
+      <h2 class="section-title">SKILLS &<br/><span class="red">TOOLS</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="skills-grid">
+
+      <div class="skill-card reveal">
+        <span class="skill-icon">🎬</span>
+        <div class="skill-name">Filmmaking & Direction</div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Cinematography</span><span>95%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="95"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Storytelling</span><span>98%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="98"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Direction</span><span>90%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="90"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay:0.1s">
+        <span class="skill-icon">✨</span>
+        <div class="skill-name">VFX & Visual Effects</div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>After Effects</span><span>97%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="97"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Nuke</span><span>85%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="85"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Houdini</span><span>80%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="80"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay:0.2s">
+        <span class="skill-icon">🎭</span>
+        <div class="skill-name">3D Animation</div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Blender</span><span>93%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="93"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Cinema 4D</span><span>88%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="88"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Unreal Engine</span><span>78%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="78"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay:0.3s">
+        <span class="skill-icon">🎵</span>
+        <div class="skill-name">Video Editing</div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Premiere Pro</span><span>98%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="98"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>DaVinci Resolve</span><span>95%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="95"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Final Cut Pro</span><span>85%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="85"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay:0.4s">
+        <span class="skill-icon">🎨</span>
+        <div class="skill-name">Motion Graphics</div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Motion Design</span><span>96%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="96"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Typography</span><span>90%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="90"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Color Grading</span><span>94%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="94"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay:0.5s">
+        <span class="skill-icon">🖼️</span>
+        <div class="skill-name">Design & Illustration</div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Photoshop</span><span>95%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="95"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Illustrator</span><span>88%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="88"></div></div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Figma</span><span>82%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="82"></div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- TIMELINE SECTION -->
+  <!-- ============================================================ -->
+  <section class="timeline-section section-padding">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(217,4,41,0.03) 0%,transparent 30%,rgba(217,4,41,0.03) 100%);pointer-events:none;"></div>
+
+    <div class="section-header reveal">
+      <div class="section-tag">Journey</div>
+      <h2 class="section-title">CREATIVE<br/><span class="red">TIMELINE</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-year">2019 · ORIGIN</div>
+          <div class="timeline-title">The Beginning</div>
+          <p class="timeline-text">Started the creative journey with basic video editing and photography, discovering the power of visual storytelling for the first time.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-year">2020 · EVOLUTION</div>
+          <div class="timeline-title">Into Animation</div>
+          <p class="timeline-text">Dove deep into 2D and 3D animation with Blender and After Effects. Created first short film that garnered 10K+ views on YouTube.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-year">2021 · BREAKTHROUGH</div>
+          <div class="timeline-title">VFX Mastery</div>
+          <p class="timeline-text">Mastered professional VFX pipelines. Collaborated with production companies on commercial projects and music videos.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-year">2022 · EXPANSION</div>
+          <div class="timeline-title">Cinematic Direction</div>
+          <p class="timeline-text">Directed first independent short film. Led the complete pipeline from pre-production to final delivery and festival submissions.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-year">2023 · RECOGNITION</div>
+          <div class="timeline-title">Award & Recognition</div>
+          <p class="timeline-text">Received recognition for visual excellence. Collaborated with international clients across Dubai, London, and New York markets.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-year">2024 · PRESENT</div>
+          <div class="timeline-title">Building the Universe</div>
+          <p class="timeline-text">Currently working on a feature-length animated film while managing multiple high-end commercial projects and mentoring emerging artists.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- MOTION GRAPHICS SHOWCASE (MARQUEE) -->
+  <!-- ============================================================ -->
+  <section class="showcase-section section-padding" style="padding-top:0;">
+    <div class="section-header reveal" style="margin-bottom:40px;">
+      <div class="section-tag">Showcase</div>
+      <h2 class="section-title">MOTION &<br/><span class="red">VISUALS</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="showcase-marquee-wrap">
+      <div class="showcase-marquee">
+        <div class="showcase-card">
+          <img src="https://images.pexels.com/photos/18545010/pexels-photo-18545010.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=300&w=500" alt="Project" loading="lazy" />
+          <div class="showcase-card-overlay"></div>
+          <div class="showcase-card-label">Shadow Verse • VFX</div>
+        </div>
+        <div class="showcase-card">
+          <img src="https://images.pexels.com/photos/28494632/pexels-photo-28494632.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=300&w=500" alt="Project" loading="lazy" />
+          <div class="showcase-card-overlay"></div>
+          <div class="showcase-card-label">Parallel Reality • Animation</div>
+        </div>
+        <div class="showcase-card">
+          <img src="https://images.pexels.com/photos/8108316/pexels-photo-8108316.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=300&w=500" alt="Project" loading="lazy" />
+          <div class="showcase-card-overlay"></div>
+          <div class="showcase-card-label">Dark Horizon • Design</div>
+        </div>
+        <div class="showcase-card">
+          <img src="https://images.pexels.com/photos/19943722/pexels-photo-19943722.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=300&w=500" alt="Project" loading="lazy" />
+          <div class="showcase-card-overlay"></div>
+          <div class="showcase-card-label">Crimson Web • Film</div>
+        </div>
+        <div class="showcase-card">
+          <img src="https://images.pexels.com/photos/25630343/pexels-photo-25630343.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=300&w=500" alt="Project" loading="lazy" />
+          <div class="showcase-card-overlay"></div>
+          <div class="showcase-card-label">Neon Spider • VFX</div>
+        </div>
+        <div class="showcase-card">
+          <img src="https://images.pexels.com/photos/18545011/pexels-photo-18545011.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=300&w=500" alt="Project" loading="lazy" />
+          <div class="showcase-card-overlay"></div>
+          <div class="showcase-card-label">Beyond Chaos • Motion</div>
+        </div>
+        <!-- Duplicate for seamless loop -->
+        <div class="showcase-card">
+          <img src="https://images.pexels.com/photos/18545010/pexels-photo-18545010.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=300&w=500" alt="Project" loading="lazy" />
+          <div class="showcase-card-overlay"></div>
+          <div class="showcase-card-label">Shadow Verse • VFX</div>
+        </div>
+        <div class="showcase-card">
+          <img src="https://images.pexels.com/photos/28494632/pexels-photo-28494632.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=300&w=500" alt="Project" loading="lazy" />
+          <div class="showcase-card-overlay"></div>
+          <div class="showcase-card-label">Parallel Reality • Animation</div>
+        </div>
+        <div class="showcase-card">
+          <img src="https://images.pexels.com/photos/8108316/pexels-photo-8108316.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=300&w=500" alt="Project" loading="lazy" />
+          <div class="showcase-card-overlay"></div>
+          <div class="showcase-card-label">Dark Horizon • Design</div>
+        </div>
+        <div class="showcase-card">
+          <img src="https://images.pexels.com/photos/19943722/pexels-photo-19943722.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=300&w=500" alt="Project" loading="lazy" />
+          <div class="showcase-card-overlay"></div>
+          <div class="showcase-card-label">Crimson Web • Film</div>
+        </div>
+        <div class="showcase-card">
+          <img src="https://images.pexels.com/photos/25630343/pexels-photo-25630343.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=300&w=500" alt="Project" loading="lazy" />
+          <div class="showcase-card-overlay"></div>
+          <div class="showcase-card-label">Neon Spider • VFX</div>
+        </div>
+        <div class="showcase-card">
+          <img src="https://images.pexels.com/photos/18545011/pexels-photo-18545011.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=300&w=500" alt="Project" loading="lazy" />
+          <div class="showcase-card-overlay"></div>
+          <div class="showcase-card-label">Beyond Chaos • Motion</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reverse Row -->
+    <div class="showcase-marquee-wrap" style="margin-top:20px;">
+      <div class="showcase-marquee showcase-marquee-reverse">
+        <div class="showcase-card">
+          <img src="https://images.pexels.com/photos/5504137/pexels-photo-5504137.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=300&w=500" alt="Project" loading="lazy" />
+          <div class="showcase-card-overlay"></div>
+          <div class="showcase-card-label">Afterglow • Editing</div>
+        </div>
+        <div class="showcase-card">
+          <img src="https://images.pexels.com/photos/20009319/pexels-photo-20009319.png?auto=compress&cs=tinysrgb&fit=crop&h=300&w=500" alt="Project" loading="lazy" />
+          <div class="showcase-card-overlay"></div>
+          <div class="showcase-card-label">The Last Stand • Film</div>
+        </div>
+        <div class="showcase-card">
+          <img src="https://images.pexels.com/photos/23384400/pexels-photo-23384400.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=300&w=500" alt="Project" loading="lazy" />
+          <div class="showcase-card-overlay"></div>
+          <div class="showcase-card-label">The Director • Film</div>
+        </div>
+        <div class="showcase-card">
+          <img src="https://images.pexels.com/photos/8108316/pexels-photo-8108316.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=300&w=500" alt="Project" loading="lazy" />
+          <div class="showcase-card-overlay"></div>
+          <div class="showcase-card-label">City Lights • Motion</div>
+        </div>
+        <div class="showcase-card">
+          <img src="https://images.pexels.com/photos/19665186/pexels-photo-19665186.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=300&w=500" alt="Project" loading="lazy" />
+          <div class="showcase-card-overlay"></div>
+          <div class="showcase-card-label">Neon Dreams • VFX</div>
+        </div>
+        <!-- Duplicates -->
+        <div class="showcase-card">
+          <img src="https://images.pexels.com/photos/5504137/pexels-photo-5504137.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=300&w=500" alt="Project" loading="lazy" />
+          <div class="showcase-card-overlay"></div>
+          <div class="showcase-card-label">Afterglow • Editing</div>
+        </div>
+        <div class="showcase-card">
+          <img src="https://images.pexels.com/photos/20009319/pexels-photo-20009319.png?auto=compress&cs=tinysrgb&fit=crop&h=300&w=500" alt="Project" loading="lazy" />
+          <div class="showcase-card-overlay"></div>
+          <div class="showcase-card-label">The Last Stand • Film</div>
+        </div>
+        <div class="showcase-card">
+          <img src="https://images.pexels.com/photos/23384400/pexels-photo-23384400.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=300&w=500" alt="Project" loading="lazy" />
+          <div class="showcase-card-overlay"></div>
+          <div class="showcase-card-label">The Director • Film</div>
+        </div>
+        <div class="showcase-card">
+          <img src="https://images.pexels.com/photos/8108316/pexels-photo-8108316.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=300&w=500" alt="Project" loading="lazy" />
+          <div class="showcase-card-overlay"></div>
+          <div class="showcase-card-label">City Lights • Motion</div>
+        </div>
+        <div class="showcase-card">
+          <img src="https://images.pexels.com/photos/19665186/pexels-photo-19665186.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=300&w=500" alt="Project" loading="lazy" />
+          <div class="showcase-card-overlay"></div>
+          <div class="showcase-card-label">Neon Dreams • VFX</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- TESTIMONIALS -->
+  <!-- ============================================================ -->
+  <section class="testimonials-section section-padding">
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(217,4,41,0.04) 0%,transparent 60%);pointer-events:none;"></div>
+
+    <div class="section-header reveal">
+      <div class="section-tag">Testimonials</div>
+      <h2 class="section-title">WHAT THEY<br/><span class="red">SAY</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="swiper testimonials-swiper">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p class="testimonial-text">"SURAJ transformed our brand vision into a cinematic masterpiece. The VFX work was beyond anything we imagined — absolutely Marvel-level quality."</p>
+            <div class="testimonial-author">
+              <img src="https://images.pexels.com/photos/8089650/pexels-photo-8089650.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=100&w=100" alt="Client" class="testimonial-avatar" loading="lazy" />
+              <div>
+                <div class="testimonial-name">Sarah Mitchell</div>
+                <div class="testimonial-role">Creative Director · Studio X</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p class="testimonial-text">"Working with SURAJ was like collaborating with a superhero. The motion graphics reel he delivered for our product launch increased conversions by 300%."</p>
+            <div class="testimonial-author">
+              <img src="https://images.pexels.com/photos/7542695/pexels-photo-7542695.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=100&w=100" alt="Client" class="testimonial-avatar" loading="lazy" />
+              <div>
+                <div class="testimonial-name">James Ramirez</div>
+                <div class="testimonial-role">CEO · Nexus Films</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p class="testimonial-text">"Pure cinematic genius. SURAJ's eye for storytelling and technical precision with VFX is unmatched. Our short film won 3 festival awards thanks to his work."</p>
+            <div class="testimonial-author">
+              <img src="https://images.pexels.com/photos/19102535/pexels-photo-19102535.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=100&w=100" alt="Client" class="testimonial-avatar" loading="lazy" />
+              <div>
+                <div class="testimonial-name">Priya Sharma</div>
+                <div class="testimonial-role">Producer · Indie Films</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p class="testimonial-text">"The animation SURAJ produced for our game cinematic was breathtaking. He understood the brief instantly and delivered a dark, atmospheric masterpiece."</p>
+            <div class="testimonial-author">
+              <img src="https://images.pexels.com/photos/6728042/pexels-photo-6728042.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=100&w=100" alt="Client" class="testimonial-avatar" loading="lazy" />
+              <div>
+                <div class="testimonial-name">Alex Chen</div>
+                <div class="testimonial-role">Game Director · DarkByte Studio</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="swiper-pagination" style="margin-top:40px;position:relative;bottom:auto;"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- COLLABORATION CTA -->
+  <!-- ============================================================ -->
+  <section class="cta-section section-padding">
+    <!-- Animated web lines background -->
+    <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.04;" viewBox="0 0 1440 700" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#FF1E1E" stroke-width="0.8" fill="none">
+        <line x1="0" y1="350" x2="1440" y2="350" />
+        <line x1="720" y1="0" x2="720" y2="700" />
+        <circle cx="720" cy="350" r="100" />
+        <circle cx="720" cy="350" r="200" />
+        <circle cx="720" cy="350" r="300" />
+        <circle cx="720" cy="350" r="400" />
+        <line x1="0" y1="0" x2="1440" y2="700" />
+        <line x1="1440" y1="0" x2="0" y2="700" />
+      </g>
+    </svg>
+
+    <div style="position:relative;z-index:1;" class="reveal">
+      <div class="section-tag">Let's Create</div>
+      <h2 class="cta-title">
+        READY TO<br/><span class="red">COLLABORATE</span><br/>?
+      </h2>
+      <p class="cta-desc">
+        Have a vision that needs to come alive? Let's build something cinematic, powerful, and unforgettable together.
+      </p>
+      <div class="cta-buttons">
+        <a href="contact.html" class="btn-primary">
+          <i class="fas fa-rocket"></i> Start a Project
+        </a>
+        <a href="portfolio.html" class="btn-secondary">
+          <i class="fas fa-eye"></i> View Portfolio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- QUICK CONTACT SNIPPET -->
+  <!-- ============================================================ -->
+  <section class="contact-section section-padding" id="contact">
+    <div class="contact-grid">
+      <div class="reveal-left">
+        <div class="contact-availability">Available for Work</div>
+        <h2 class="contact-left-title">LET'S<br/><span>TALK</span></h2>
+        <p class="contact-desc">Ready to bring your vision to life. Whether it's a short film, commercial, animation, or VFX — I'm here to craft something extraordinary.</p>
+
+        <div class="contact-info-items">
+          <div class="contact-info-item">
+            <div class="contact-info-icon">✉️</div>
+            <div>
+              <div class="contact-info-label">Email</div>
+              <div class="contact-info-value">hello@surajcreates.com</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📍</div>
+            <div>
+              <div class="contact-info-label">Location</div>
+              <div class="contact-info-value">Mumbai, India · Worldwide Remote</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">⚡</div>
+            <div>
+              <div class="contact-info-label">Response Time</div>
+              <div class="contact-info-value">Within 24 Hours</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-link" aria-label="Behance"><i class="fab fa-behance"></i></a>
+          <a href="#" class="social-link" aria-label="Vimeo"><i class="fab fa-vimeo-v"></i></a>
+        </div>
+      </div>
+
+      <div class="reveal-right">
+        <div class="contact-form">
+          <form>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Your Name</label>
+                <input type="text" class="form-input" placeholder="John Doe" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-input" placeholder="john@example.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Project Type</label>
+              <input type="text" class="form-input" placeholder="VFX · Animation · Filmmaking · Editing" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tell Me About Your Vision</label>
+              <textarea class="form-input" placeholder="Describe your project, timeline, and goals..." rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn-submit">
+              <i class="fas fa-paper-plane"></i>&nbsp; Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- FOOTER -->
+  <!-- ============================================================ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">SUR<span>AJ</span></a>
+        <p class="footer-bio">Cinematic filmmaker, animator, VFX designer and visual storyteller. Creating immersive experiences that live at the edge of imagination and reality.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-link" aria-label="Behance"><i class="fab fa-behance"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="#">Filmmaking</a></li>
+          <li><a href="#">VFX & CGI</a></li>
+          <li><a href="#">3D Animation</a></li>
+          <li><a href="#">Motion Graphics</a></li>
+          <li><a href="#">Color Grading</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Connect</div>
+        <ul class="footer-links">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#">Behance</a></li>
+          <li><a href="#">Vimeo</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 <span>SURAJ</span> · All Rights Reserved · Crafted with ❤️ & Code</div>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main Script -->
+  <script src="script.js"></script>
+
+</body>
+</html>

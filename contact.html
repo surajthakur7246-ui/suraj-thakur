@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — SURAJ · Filmmaker · Animator · VFX</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Contact Page Specific */
+    .contact-hero {
+      min-height: 55vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 160px 60px 80px;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-primary);
+    }
+
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 70% at 90% 50%, rgba(217,4,41,0.14) 0%, transparent 70%);
+    }
+
+    .contact-hero-title {
+      font-family: var(--font-hero);
+      font-size: clamp(80px, 13vw, 170px);
+      line-height: 0.85;
+      color: var(--text-white);
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-hero-title .red {
+      color: var(--red-primary);
+      text-shadow: var(--glow-red-intense);
+    }
+
+    /* Full Contact Section */
+    .full-contact-section {
+      background: var(--bg-secondary);
+      position: relative;
+      padding: 100px 60px;
+    }
+
+    .full-contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 100px;
+      align-items: start;
+    }
+
+    .contact-left-section {
+      position: sticky;
+      top: 120px;
+    }
+
+    .contact-left-tagline {
+      font-family: var(--font-hero);
+      font-size: clamp(48px, 7vw, 90px);
+      line-height: 0.9;
+      color: var(--text-white);
+      margin-bottom: 24px;
+    }
+
+    .contact-left-tagline .red {
+      color: var(--red-primary);
+      text-shadow: var(--glow-red);
+    }
+
+    .contact-desc-full {
+      font-family: var(--font-text);
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--text-muted);
+      margin-bottom: 48px;
+      max-width: 420px;
+    }
+
+    .contact-detail-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .contact-detail-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 24px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .contact-detail-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--red-primary);
+      transform: scaleY(0);
+      transition: transform 0.4s;
+    }
+
+    .contact-detail-card:hover::before {
+      transform: scaleY(1);
+    }
+
+    .contact-detail-card:hover {
+      background: rgba(255,30,30,0.03);
+      border-color: rgba(255,30,30,0.2);
+    }
+
+    .contact-detail-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(255,30,30,0.1);
+      border: 1px solid rgba(255,30,30,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+      color: var(--red-primary);
+    }
+
+    .contact-detail-label {
+      font-family: var(--font-ui);
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--red-primary);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .contact-detail-value {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text-white);
+      font-weight: 500;
+    }
+
+    .contact-detail-sub {
+      font-family: var(--font-ui);
+      font-size: 9px;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Status indicator */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-ui);
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: #22c55e;
+      text-transform: uppercase;
+      padding: 12px 24px;
+      border: 1px solid rgba(34,197,94,0.3);
+      background: rgba(34,197,94,0.05);
+      margin-bottom: 32px;
+    }
+
+    .status-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      animation: pulse-green 2s infinite;
+      flex-shrink: 0;
+    }
+
+    /* Big Contact Form */
+    .big-contact-form {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 56px;
+      position: relative;
+    }
+
+    .big-contact-form::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--red-primary), transparent);
+    }
+
+    .form-section-title {
+      font-family: var(--font-hero);
+      font-size: 36px;
+      color: var(--text-white);
+      margin-bottom: 32px;
+      line-height: 1;
+    }
+
+    .form-section-title span {
+      color: var(--red-primary);
+    }
+
+    .big-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .big-form-group {
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .big-form-label {
+      display: block;
+      font-family: var(--font-ui);
+      font-size: 9px;
+      letter-spacing: 4px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .big-form-input {
+      width: 100%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: var(--text-white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      padding: 18px 22px;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .big-form-input::placeholder {
+      color: rgba(148,163,184,0.4);
+    }
+
+    .big-form-input:focus {
+      border-color: var(--red-primary);
+      background: rgba(255,30,30,0.03);
+      box-shadow: 0 0 30px rgba(255,30,30,0.08);
+    }
+
+    textarea.big-form-input {
+      resize: vertical;
+      min-height: 160px;
+    }
+
+    /* Project Type Radio */
+    .project-type-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .project-type-option {
+      cursor: pointer;
+    }
+
+    .project-type-option input[type="radio"] {
+      display: none;
+    }
+
+    .project-type-label {
+      display: block;
+      font-family: var(--font-ui);
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      padding: 12px 16px;
+      border: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .project-type-option input[type="radio"]:checked + .project-type-label {
+      border-color: var(--red-primary);
+      color: var(--red-primary);
+      background: rgba(255,30,30,0.08);
+      box-shadow: var(--glow-red);
+    }
+
+    .project-type-label:hover {
+      border-color: rgba(255,30,30,0.4);
+      color: var(--text-white);
+    }
+
+    /* Budget Range */
+    .budget-slider {
+      width: 100%;
+      -webkit-appearance: none;
+      height: 2px;
+      background: rgba(255,255,255,0.05);
+      outline: none;
+      margin: 12px 0;
+    }
+
+    .budget-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--red-primary);
+      cursor: pointer;
+      box-shadow: var(--glow-red);
+    }
+
+    .budget-display {
+      font-family: var(--font-ui);
+      font-size: 14px;
+      color: var(--red-primary);
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+
+    .big-submit-btn {
+      width: 100%;
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--text-white);
+      background: var(--red-primary);
+      border: none;
+      padding: 24px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+      clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .big-submit-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transform: translateX(-100%);
+    }
+
+    .big-submit-btn:hover::before {
+      transition: transform 0.7s;
+      transform: translateX(100%);
+    }
+
+    .big-submit-btn:hover {
+      box-shadow: var(--glow-red-intense);
+      background: #ff3333;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      background: var(--bg-primary);
+    }
+
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 0;
+      cursor: pointer;
+      font-family: var(--font-ui);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--text-white);
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .faq-question:hover {
+      color: var(--red-primary);
+    }
+
+    .faq-icon {
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(255,30,30,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--red-primary);
+      font-size: 16px;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: rgba(255,30,30,0.1);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.23, 1, 0.32, 1), padding 0.3s;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding-bottom: 24px;
+    }
+
+    .faq-answer-text {
+      font-family: var(--font-text);
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+
+    /* Map placeholder */
+    .location-section {
+      background: var(--bg-secondary);
+      padding: 100px 60px;
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .location-map {
+      height: 300px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,30,30,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .location-map::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,30,30,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,30,30,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .location-map-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .location-map-pin {
+      font-size: 48px;
+      animation: float-1 4s ease-in-out infinite;
+    }
+
+    .location-map-label {
+      font-family: var(--font-ui);
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: var(--red-primary);
+      text-transform: uppercase;
+      margin-top: 12px;
+    }
+
+    /* Social Grid */
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .social-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      text-decoration: none;
+      transition: var(--transition);
+      group: true;
+    }
+
+    .social-card:hover {
+      border-color: rgba(255,30,30,0.4);
+      background: rgba(255,30,30,0.04);
+      transform: translateY(-2px);
+    }
+
+    .social-card-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(255,30,30,0.1);
+      border: 1px solid rgba(255,30,30,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--red-primary);
+      flex-shrink: 0;
+    }
+
+    .social-card-name {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--text-white);
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+
+    .social-card-handle {
+      font-family: var(--font-text);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .full-contact-grid { grid-template-columns: 1fr; gap: 60px; }
+      .contact-left-section { position: static; }
+      .location-grid { grid-template-columns: 1fr; }
+      .full-contact-section { padding: 80px 40px; }
+      .location-section { padding: 80px 40px; }
+    }
+
+    @media (max-width: 768px) {
+      .contact-hero { padding: 120px 24px 60px; }
+      .full-contact-section { padding: 60px 24px; }
+      .location-section { padding: 60px 24px; }
+      .big-contact-form { padding: 32px 24px; }
+      .big-form-row { grid-template-columns: 1fr; }
+      .project-type-grid { grid-template-columns: repeat(2, 1fr); }
+      .social-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="loading-screen">
+    <div class="loading-logo">SUR<span>AJ</span></div>
+    <div class="loading-bar-wrap"><div class="loading-bar"></div></div>
+    <div class="loading-percent">0%</div>
+  </div>
+
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">SUR<span>AJ</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta"><span>Let's Work</span></a>
+    <div class="nav-toggle"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="mobile-menu">
+    <ul class="mobile-menu-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- CONTACT HERO -->
+  <section class="contact-hero">
+    <!-- Web SVG -->
+    <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:0.07;" viewBox="0 0 1440 700" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#FF1E1E" stroke-width="0.7" fill="none">
+        <line x1="1440" y1="0" x2="700" y2="700" />
+        <line x1="1440" y1="0" x2="800" y2="700" />
+        <line x1="1440" y1="0" x2="900" y2="700" />
+        <path d="M 1440,0 Q 1200,300 700,700" />
+        <path d="M 1440,0 Q 1100,300 800,700" />
+        <!-- Cross webs -->
+        <line x1="700" y1="700" x2="800" y2="700" />
+        <line x1="800" y1="700" x2="900" y2="700" />
+      </g>
+    </svg>
+
+    <!-- Large ambient glow -->
+    <div style="position:absolute;top:0;right:0;width:600px;height:100%;background:radial-gradient(ellipse at right center,rgba(217,4,41,0.15) 0%,transparent 60%);pointer-events:none;z-index:1;"></div>
+
+    <div style="position:relative;z-index:2;">
+      <div class="section-tag" style="margin-bottom:16px;">Get In Touch</div>
+      <h1 class="contact-hero-title">LET'S<br/><span class="red">CONNECT</span></h1>
+    </div>
+  </section>
+
+  <!-- FULL CONTACT SECTION -->
+  <section class="full-contact-section">
+    <!-- Decorative lines -->
+    <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,30,30,0.4),transparent);"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(217,4,41,0.04) 0%,transparent 50%);pointer-events:none;"></div>
+
+    <div class="full-contact-grid">
+
+      <!-- Left -->
+      <div class="contact-left-section reveal-left">
+        <div class="status-badge">
+          🟢 Available for New Projects
+        </div>
+
+        <h2 class="contact-left-tagline">
+          START A<br/><span class="red">PROJECT</span><br/>WITH ME
+        </h2>
+
+        <p class="contact-desc-full">
+          Whether it's a feature film, a motion graphics package, or a complex VFX sequence — I'm ready to turn your vision into a cinematic reality. Let's build something extraordinary.
+        </p>
+
+        <div class="contact-detail-cards">
+          <div class="contact-detail-card">
+            <div class="contact-detail-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <div class="contact-detail-label">Email Me</div>
+              <div class="contact-detail-value">hello@surajcreates.com</div>
+              <div class="contact-detail-sub">I reply within 24 hours</div>
+            </div>
+          </div>
+
+          <div class="contact-detail-card">
+            <div class="contact-detail-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <div class="contact-detail-label">Call Me</div>
+              <div class="contact-detail-value">+91 98765 43210</div>
+              <div class="contact-detail-sub">Mon–Fri, 9AM–8PM IST</div>
+            </div>
+          </div>
+
+          <div class="contact-detail-card">
+            <div class="contact-detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <div class="contact-detail-label">Find Me</div>
+              <div class="contact-detail-value">Mumbai, India</div>
+              <div class="contact-detail-sub">Available Globally & Remote</div>
+            </div>
+          </div>
+
+          <div class="contact-detail-card">
+            <div class="contact-detail-icon"><i class="fas fa-clock"></i></div>
+            <div>
+              <div class="contact-detail-label">Timezone</div>
+              <div class="contact-detail-value">IST (UTC+5:30)</div>
+              <div class="contact-detail-sub">Flexible for international clients</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <div style="font-family:'Orbitron',sans-serif;font-size:10px;letter-spacing:3px;color:var(--text-muted);text-transform:uppercase;margin-bottom:16px;">Follow My Work</div>
+        <div class="social-grid">
+          <a href="#" class="social-card">
+            <div class="social-card-icon"><i class="fab fa-instagram"></i></div>
+            <div>
+              <div class="social-card-name">Instagram</div>
+              <div class="social-card-handle">@suraj.creates</div>
+            </div>
+          </a>
+          <a href="#" class="social-card">
+            <div class="social-card-icon"><i class="fab fa-youtube"></i></div>
+            <div>
+              <div class="social-card-name">YouTube</div>
+              <div class="social-card-handle">@SurajFilms</div>
+            </div>
+          </a>
+          <a href="#" class="social-card">
+            <div class="social-card-icon"><i class="fab fa-behance"></i></div>
+            <div>
+              <div class="social-card-name">Behance</div>
+              <div class="social-card-handle">@SurajVFX</div>
+            </div>
+          </a>
+          <a href="#" class="social-card">
+            <div class="social-card-icon"><i class="fab fa-vimeo-v"></i></div>
+            <div>
+              <div class="social-card-name">Vimeo</div>
+              <div class="social-card-handle">@SurajFilms</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right – Big Form -->
+      <div class="reveal-right">
+        <div class="big-contact-form">
+          <div class="form-section-title">
+            SEND A <span>MESSAGE</span>
+          </div>
+
+          <form id="contactForm">
+            <div class="big-form-row">
+              <div class="big-form-group">
+                <label class="big-form-label">Your Name *</label>
+                <input type="text" class="big-form-input" placeholder="John Doe" required />
+              </div>
+              <div class="big-form-group">
+                <label class="big-form-label">Email Address *</label>
+                <input type="email" class="big-form-input" placeholder="john@studio.com" required />
+              </div>
+            </div>
+
+            <div class="big-form-row">
+              <div class="big-form-group">
+                <label class="big-form-label">Company / Studio</label>
+                <input type="text" class="big-form-input" placeholder="Your Studio Name" />
+              </div>
+              <div class="big-form-group">
+                <label class="big-form-label">Project Timeline</label>
+                <input type="text" class="big-form-input" placeholder="e.g. 4–6 weeks" />
+              </div>
+            </div>
+
+            <div class="big-form-group">
+              <label class="big-form-label">Project Type *</label>
+              <div class="project-type-grid">
+                <label class="project-type-option">
+                  <input type="radio" name="projectType" value="filmmaking" />
+                  <div class="project-type-label">🎬 Filmmaking</div>
+                </label>
+                <label class="project-type-option">
+                  <input type="radio" name="projectType" value="vfx" />
+                  <div class="project-type-label">✨ VFX / CGI</div>
+                </label>
+                <label class="project-type-option">
+                  <input type="radio" name="projectType" value="animation" />
+                  <div class="project-type-label">🎭 Animation</div>
+                </label>
+                <label class="project-type-option">
+                  <input type="radio" name="projectType" value="motion" />
+                  <div class="project-type-label">🎨 Motion</div>
+                </label>
+                <label class="project-type-option">
+                  <input type="radio" name="projectType" value="editing" />
+                  <div class="project-type-label">✂️ Editing</div>
+                </label>
+                <label class="project-type-option">
+                  <input type="radio" name="projectType" value="other" />
+                  <div class="project-type-label">⚡ Other</div>
+                </label>
+              </div>
+            </div>
+
+            <div class="big-form-group">
+              <label class="big-form-label">Estimated Budget</label>
+              <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px;">
+                <input type="range" class="budget-slider" id="budgetSlider" min="500" max="50000" value="5000" step="500" />
+                <span class="budget-display" id="budgetDisplay">$5,000</span>
+              </div>
+            </div>
+
+            <div class="big-form-group">
+              <label class="big-form-label">Subject / Project Title *</label>
+              <input type="text" class="big-form-input" placeholder="e.g. VFX for Feature Film - 2024" required />
+            </div>
+
+            <div class="big-form-group" style="margin-bottom:8px;">
+              <label class="big-form-label">Tell Me About Your Vision *</label>
+              <textarea class="big-form-input" placeholder="Describe your project in detail — concept, scope, references, deliverables, and any other important information..." rows="6" required></textarea>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-top:8px;">
+              <input type="checkbox" id="agreeCheck" style="accent-color:var(--red-primary);width:16px;height:16px;cursor:pointer;" />
+              <label for="agreeCheck" style="font-family:'Orbitron',sans-serif;font-size:9px;letter-spacing:2px;color:var(--text-muted);cursor:pointer;">
+                I agree to the privacy policy and terms of service
+              </label>
+            </div>
+
+            <button type="submit" class="big-submit-btn" id="submitBtn">
+              <i class="fas fa-paper-plane"></i>
+              SEND MESSAGE
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="location-section">
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(217,4,41,0.04) 0%,transparent 60%);pointer-events:none;"></div>
+
+    <div class="location-grid">
+      <div class="reveal-left">
+        <div class="section-tag" style="margin-bottom:16px;">Based In</div>
+        <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,80px);color:var(--text-white);line-height:0.9;margin-bottom:20px;">
+          MUMBAI,<br/><span style="color:var(--red-primary);text-shadow:var(--glow-red);">INDIA</span>
+        </h2>
+        <p style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.9;color:var(--text-muted);max-width:380px;margin-bottom:32px;">
+          Based in Mumbai — the heart of India's film and entertainment industry. Working with clients globally, delivering cinematic excellence regardless of geography.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;align-items:center;gap:12px;font-family:'Orbitron',sans-serif;font-size:10px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;">
+            <span style="color:var(--red-primary);">🌍</span> Available for on-site work — Mumbai, Delhi, Bangalore
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;font-family:'Orbitron',sans-serif;font-size:10px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;">
+            <span style="color:var(--red-primary);">✈️</span> Open to international travel for major projects
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;font-family:'Orbitron',sans-serif;font-size:10px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;">
+            <span style="color:var(--red-primary);">💻</span> 100% remote collaboration available worldwide
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal-right">
+        <div class="location-map">
+          <div class="location-map-content">
+            <div class="location-map-pin">📍</div>
+            <div class="location-map-label">Mumbai, Maharashtra, India</div>
+            <div style="font-family:'Inter',sans-serif;font-size:11px;color:var(--text-muted);margin-top:6px;">19.0760° N, 72.8777° E</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section section-padding">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(217,4,41,0.03) 0%,transparent 100%);pointer-events:none;"></div>
+
+    <div class="section-header reveal">
+      <div class="section-tag">FAQ</div>
+      <h2 class="section-title">COMMON<br/><span class="red">QUESTIONS</span></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-question">
+          What is your typical project timeline?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <p class="faq-answer-text">Project timelines vary based on scope. A standard motion graphics video takes 1–2 weeks. Short film VFX can take 3–6 weeks. Full 3D animation projects typically require 6–12 weeks. I provide a detailed timeline breakdown in every project proposal.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal" style="transition-delay:0.1s">
+        <div class="faq-question">
+          What is your minimum project budget?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <p class="faq-answer-text">My minimum engagement starts at $500 for simple editing projects. VFX and animation projects typically start from $2,000+. For complex productions, I provide custom quotes based on scope, deliverables, and timeline. Quality is always prioritized over shortcuts.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal" style="transition-delay:0.2s">
+        <div class="faq-question">
+          Do you work with international clients?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <p class="faq-answer-text">Absolutely. I work with clients globally via remote collaboration. I'm comfortable with all time zones and use tools like Frame.io, Notion, and Slack for seamless communication. I accept payments in USD, EUR, GBP, and INR.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal" style="transition-delay:0.3s">
+        <div class="faq-question">
+          What software and tools do you use?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <p class="faq-answer-text">My primary toolkit includes After Effects, Premiere Pro, DaVinci Resolve, Blender, Cinema 4D, Houdini, Nuke, Photoshop, and Illustrator. For game cinematics, I work with Unreal Engine 5. I'm constantly learning new tools to stay at the industry's cutting edge.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal" style="transition-delay:0.4s">
+        <div class="faq-question">
+          What is your revision policy?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <p class="faq-answer-text">Standard projects include 2–3 rounds of revisions. I work iteratively with clients and provide progress updates at every milestone. My goal is to deliver exactly what you envision — client satisfaction drives everything I create.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal" style="transition-delay:0.5s">
+        <div class="faq-question">
+          Do you sign NDAs and contracts?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <p class="faq-answer-text">Yes, absolutely. I sign NDAs for confidential projects and provide professional contracts for all engagements. I use clear agreements that protect both parties and outline deliverables, timelines, and payment terms clearly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">SUR<span>AJ</span></a>
+        <p class="footer-bio">Cinematic filmmaker, animator, VFX designer and visual storyteller. Creating immersive experiences that live at the edge of imagination and reality.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="#">Filmmaking</a></li>
+          <li><a href="#">VFX & CGI</a></li>
+          <li><a href="#">Animation</a></li>
+          <li><a href="#">Motion Graphics</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Connect</div>
+        <ul class="footer-links">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#">Behance</a></li>
+          <li><a href="#">Vimeo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 <span>SURAJ</span> · All Rights Reserved</div>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Budget slider
+    const slider = document.getElementById('budgetSlider');
+    const display = document.getElementById('budgetDisplay');
+    if (slider && display) {
+      slider.addEventListener('input', () => {
+        const val = parseInt(slider.value);
+        display.textContent = val >= 1000 ? '$' + (val/1000).toFixed(val%1000===0?0:1) + 'K' : '$' + val;
+      });
+    }
+
+    // Contact form
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    if (form && submitBtn) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> SENDING...';
+        submitBtn.disabled = true;
+        setTimeout(() => {
+          submitBtn.innerHTML = '<i class="fas fa-check"></i> MESSAGE SENT!';
+          submitBtn.style.background = '#22c55e';
+          setTimeout(() => {
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> SEND MESSAGE';
+            submitBtn.disabled = false;
+            submitBtn.style.background = '';
+            form.reset();
+          }, 3000);
+        }, 2000);
+      });
+    }
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>
